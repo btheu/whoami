@@ -16,10 +16,11 @@ func main() {
 
     name := os.Getenv("NAME")
     desc := os.Getenv("DESC")
+    ctxt := os.Getenv("CONTEXT_PATH")
 
     fmt.Fprintf(os.Stdout, "Listening on :%s\n", port)
     hostname, _ := os.Hostname()
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/" + ctxt, func(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(os.Stdout, "I'm %s \n", hostname)
         fmt.Fprintf(os.Stdout, "Name: %s \n", name)
         fmt.Fprintf(os.Stdout, "Desc: %s \n", desc)
